@@ -79,6 +79,7 @@ Plugin 'fatih/vim-go'
 Plugin 'parkr/vim-jekyll'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'editorconfig/editorconfig-vim'
 call vundle#end()
 filetype plugin indent on
 
