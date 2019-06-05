@@ -76,6 +76,9 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown' "need ruby which is unsupported
 " Plugin 'lilydjwg/fcitx.vim' "linux only
 Plugin 'fatih/vim-go'
+Plugin 'parkr/vim-jekyll'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'sheerun/vim-polyglot'
 call vundle#end()
 filetype plugin indent on
 
@@ -115,12 +118,16 @@ set laststatus=2
 " GUI Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " guifont
-set guifont=Yahei\ Consolas\ Hybrid\ 14
-if has("gui_gtk2")
-    set guifont=Consolas\ 14
-    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 12,Fixed\ 12
-    set guifontwide=Microsoft\ Yahei\ 14,WenQuanYi\ Zen\ Hei\ 14
-    set linespace=2
+if has('gui_running')
+    if has("gui_gtk2")
+        "set guifont=Consolas\ 14
+        "set guifont=Bitstream\ Vera\ Sans\ Mono\ 12,Fixed\ 12
+        set guifont=Yahei\ Consolas\ Hybrid\ 14
+        set guifontwide=Microsoft\ Yahei\ 14,WenQuanYi\ Zen\ Hei\ 14
+        set linespace=2
+    elseif has('gui_win32')
+        set guifont=Yahei\ Consolas\ Hybrid:h12
+    endif
 endif
 
 " no scroll bar, NOTE: no space near =
@@ -346,6 +353,11 @@ nnoremap <leader>gb :GoBuild<CR>
 nnoremap <leader>gr :GoRun<CR>
 nnoremap <leader>gt :GoTest<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let vim-table-mode use Markdown-compatible table
+let g:table_mode_cornner='|'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search
@@ -360,4 +372,10 @@ nnoremap <Leader>sp :CtrlSF<CR>
 " brackets snippets
 "
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Project specified
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Format "AI:An Modern Approach" exercises
+nnoremap <leader>faie :%s/^[0-9]*\.[0-9]* /### Exercise &/g<Return>:%s/^[a-z]\. /AZLabelMark&/g<Return>gg500J:%s/### Exercise [0-9]*\.[0-9]*/\r\r&\r\r>/g<Return>:%s/AZLabelMark\([a-z]\)/  \r> **\1**/g<Return>
 
