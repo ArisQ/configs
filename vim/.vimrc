@@ -40,48 +40,64 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin (Plugin first as other settings like colorscheme depends on it.)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'tomasr/molokai'
+Plug 'vim-scripts/phd'
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'Lokaltog/vim-powerline'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kshenoy/vim-signature'
+Plug 'airblade/vim-gitgutter'
+
+
+"Plug 'SirVer/ultisnips'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
+Plug 'dhruvasagar/vim-table-mode'
+
+Plug 'vim-scripts/DrawIt'
+
+Plug 'vim-syntastic/syntastic'
+
+Plug 'sjl/gundo.vim'
+
+"Plug 'Valloric/YouCompleteMe'
+
+Plug 'chr4/nginx.vim'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+call plug#end()
+
 " use vundle to manage plugins
 " vundle environment setting
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+"filetype off
+"set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/phd'
-Plugin 'Mizuchi/STL-Syntax'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'kshenoy/vim-signature'
-Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/indexer.tar.gz'
-Plugin 'vim-scripts/DfrankUtil'
-Plugin 'vim-scripts/vimprj'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/DrawIt'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-" Plugin 'derekwyatt/vim-protodef'  "unusable
-Plugin 'scrooloose/nerdtree'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'gcmt/wildfire.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'suan/vim-instant-markdown' "need ruby which is unsupported
-" Plugin 'lilydjwg/fcitx.vim' "linux only
-Plugin 'fatih/vim-go'
-Plugin 'parkr/vim-jekyll'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'editorconfig/editorconfig-vim'
-call vundle#end()
-filetype plugin indent on
+"call vundle#begin()
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'Mizuchi/STL-Syntax'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plugin 'derekwyatt/vim-fswitch'
+"Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+"Plugin 'vim-scripts/indexer.tar.gz'
+"Plugin 'vim-scripts/DfrankUtil'
+"Plugin 'vim-scripts/vimprj'
+"Plugin 'dyng/ctrlsf.vim'
+"Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'scrooloose/nerdcommenter'
+"" Plugin 'derekwyatt/vim-protodef'  "unusable
+"Plugin 'gcmt/wildfire.vim'
+"" Plugin 'lilydjwg/fcitx.vim' "linux only
+"Plugin 'fatih/vim-go'
+"Plugin 'parkr/vim-jekyll'
+"Plugin 'sheerun/vim-polyglot'
+"Plugin 'editorconfig/editorconfig-vim'
+"call vundle#end()
+"filetype plugin indent on
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -89,8 +105,8 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color setting
 set background=dark
-"colorscheme solarized
-colorscheme molokai
+colorscheme solarized
+"colorscheme molokai
 "colorscheme phd
 
 " makes cursor not blink
@@ -114,6 +130,8 @@ set laststatus=2
 " statusline color scheme
 "let g:Powerline_colorscheme='solarized256'
 
+"set number relativenumber
+"set nu rnu
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI Settings
@@ -141,10 +159,6 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Snippets
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent
@@ -263,6 +277,7 @@ let g:tagbar_type_cpp = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " make
 nmap <Leader>m :wa<CR>:make<CR><CR>:cw<CR>
+nnoremap <Leader>r :!%:p<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -304,6 +319,14 @@ map <C-S-Tab> :MBEbp<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Table Mode
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let vim-table-mode use Markdown-compatible table
+let g:table_mode_corner='|'
+map <leader>tm :TableModeToggle
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " History
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " environment saving and restoring
@@ -324,6 +347,19 @@ nnoremap <Leader>ud :GundoToggle<CR>
 set undofile
 " undo 历史保存路径
 set undodir=~/.undo_history/
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastics
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -357,8 +393,16 @@ nnoremap <leader>gt :GoTest<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let vim-table-mode use Markdown-compatible table
-let g:table_mode_cornner='|'
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+"let g:instant_markdown_port = 38888
+"let g:instant_markdown_python = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search
