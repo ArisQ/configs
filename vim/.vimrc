@@ -57,7 +57,8 @@ Plug 'airblade/vim-gitgutter'
 
 "Plug 'SirVer/ultisnips'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'vim-scripts/DrawIt'
