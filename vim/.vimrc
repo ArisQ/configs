@@ -67,7 +67,7 @@ Plug 'vim-syntastic/syntastic'
 
 Plug 'sjl/gundo.vim'
 
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 Plug 'chr4/nginx.vim'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
